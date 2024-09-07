@@ -4,22 +4,22 @@ using staytheories.Repository;
 
 public class staytheories_console
 {
-    static StaytheoriesContext context;
+    static StaytheoriesContext _context;
 
     static staytheories_console()
     {
-        context = new StaytheoriesContext();
+        _context = new StaytheoriesContext();
     }
     
     //Tenant Related Operations;
     static bool AddTenant(Tenant tenant)
     {
-        context.Tenants.Add(tenant);
-        var result = context.SaveChanges();
+        _context.Tenants.Add(tenant);
+        var result = _context.SaveChanges();
         return (result > 0 ? true : false);
     }
     
-    static void addTenantFromConsole()
+    static void AddTenantFromConsole()
     {
         Console.Write("Enter the tenant name: ");
         string tenantName = Console.ReadLine();
@@ -27,21 +27,21 @@ public class staytheories_console
         else Console.WriteLine("Tenant not added");
     }
     
-    static void getAllTenants()
+    static void GetAllTenants()
     {
-        foreach (Tenant tenant in context.Tenants)
+        foreach (Tenant tenant in _context.Tenants)
         {
             Console.WriteLine("{0}: {1}", tenant.TenantID, tenant.TenantName);
         }
     }
 
-    static void updateTenant(int tenantId, string newTenantName)
+    static void UpdateTenant(int tenantId, string newTenantName)
     {
-        var getExistingTenantName = context.Tenants.Find(tenantId);
+        var getExistingTenantName = _context.Tenants.Find(tenantId);
         if (getExistingTenantName != null)
         {   
             getExistingTenantName.TenantName = newTenantName;
-            context.SaveChanges();
+            _context.SaveChanges();
             Console.WriteLine("Tenant Name Updated");
         }
         else
@@ -50,27 +50,27 @@ public class staytheories_console
         }
     }
     
-    static void updateTenantFromConsole()
+    static void UpdateTenantFromConsole()
     {
             Console.Write("Enter the tenant ID");
             int tenantid = Convert.ToInt32(Console.ReadLine());
             Console.Write("Enter the tenant name: ");
             string tenantName = Console.ReadLine();
-            updateTenant(tenantid, tenantName);
+            UpdateTenant(tenantid, tenantName);
     }
     
-    static bool deleteTenant(Tenant tenant)
+    static bool DeleteTenant(Tenant tenant)
     {
-        context.Tenants.Remove(tenant);
-        var res = context.SaveChanges();
+        _context.Tenants.Remove(tenant);
+        var res = _context.SaveChanges();
         return (res > 0 ? true : false);
     }
 
-    static void removeTenantFromDatabase()
+    static void RemoveTenantFromDatabase()
     {
         Console.Write("Enter the tenant ID: ");
         int tenantId = Convert.ToInt32(Console.ReadLine());
-        if(deleteTenant(context.Tenants.Find(tenantId)))Console.WriteLine("Tenant deleted");
+        if(DeleteTenant(_context.Tenants.Find(tenantId)))Console.WriteLine("Tenant deleted");
         else Console.WriteLine("Tenant not deleted");
     }
 
@@ -79,12 +79,12 @@ public class staytheories_console
     //Product Related Operations;
     static bool AddProduct(Product product)
     {
-        context.Products.Add(product);
-        var result = context.SaveChanges();
+        _context.Products.Add(product);
+        var result = _context.SaveChanges();
         return (result > 0 ? true : false);
     }
     
-    static void addProductFromConsole()
+    static void AddProductFromConsole()
     {
             Console.Write("Enter product name: ");
             string productName = Console.ReadLine();
@@ -94,22 +94,22 @@ public class staytheories_console
             else{Console.WriteLine("Product Not Found");}
     }
     
-    static void getAllProducts()
+    static void GetAllProducts()
     {
-        foreach (Product product in context.Products)
+        foreach (Product product in _context.Products)
         {
             Console.WriteLine("{0}: {1}: {2}", product.ProductID, product.ProductName, product.ProductSerial);
         }
     }
     
-    static void updateProduct(int productId, string productName, string productSerial)
+    static void UpdateProduct(int productId, string productName, string productSerial)
     {
-        var getExistingProductDetails = context.Products.Find(productId);
+        var getExistingProductDetails = _context.Products.Find(productId);
         if (getExistingProductDetails != null)
         {   
             getExistingProductDetails.ProductName = productName;
             getExistingProductDetails.ProductSerial = string.IsNullOrWhiteSpace(productSerial) == true ? getExistingProductDetails.ProductSerial : productSerial;
-            context.SaveChanges();
+            _context.SaveChanges();
             Console.WriteLine("Product Name Updated");
         }
         else
@@ -118,7 +118,7 @@ public class staytheories_console
         }
     }
     
-    static void updateProductFromConsole()
+    static void UpdateProductFromConsole()
     {
             Console.Write("Enter product ID: ");
             int productId = Convert.ToInt32(Console.ReadLine());
@@ -127,32 +127,32 @@ public class staytheories_console
             Console.Write("Enter product Serial: ");
             string productSerial = Console.ReadLine();
             
-            updateProduct(productId, productName, productSerial);
+            UpdateProduct(productId, productName, productSerial);
     }
     
-    static bool deleteProdcut(Product product)
+    static bool DeleteProdcut(Product product)
     {
-        context.Products.Remove(product);
-        var res = context.SaveChanges();
+        _context.Products.Remove(product);
+        var res = _context.SaveChanges();
         return (res > 0 ? true : false);
     }
     
-    static void removeProductFromDatabase()
+    static void RemoveProductFromDatabase()
     {
         Console.Write("Enter the Product ID: ");
         int productsId = Convert.ToInt32(Console.ReadLine());
-        if(deleteProdcut(context.Products.Find(productsId))){Console.WriteLine("Product Deleted");}
+        if(DeleteProdcut(_context.Products.Find(productsId))){Console.WriteLine("Product Deleted");}
         else Console.WriteLine("Product Not Found");
     }
     
     //Product Sell Related Operations;
     static bool AddSell(ProductSale productSale)
     {
-        context.ProductSales.Add(productSale);
-        var result = context.SaveChanges();
+        _context.ProductSales.Add(productSale);
+        var result = _context.SaveChanges();
         return (result > 0 ? true : false);
     }
-    static void addSaleFromConsole()
+    static void AddSaleFromConsole()
     {
         
         Console.Write("Enter Product ID");
@@ -161,17 +161,17 @@ public class staytheories_console
         Console.Write("Enter Tenant ID");
         int tenantId = Convert.ToInt32(Console.ReadLine());
         
-        Product p = context.Products.Find(productId);
-        Tenant t = context.Tenants.Find(tenantId);
+        Product p = _context.Products.Find(productId);
+        Tenant t = _context.Tenants.Find(tenantId);
 
         if(AddSell(new ProductSale() { Product = p , Tenant = t})){Console.WriteLine("Sale Added");}
         else Console.WriteLine("Sale not added");
 
     }
     
-    static void getAllProductsSale()
+    static void GetAllProductsSale()
     {
-        var products = context.ProductSales.Include(p => p.Product).Include(q=>q.Tenant).ToList();
+        var products = _context.ProductSales.Include(p => p.Product).Include(q=>q.Tenant).ToList();
         foreach (var product in products)
         {
             Console.WriteLine("{0}: {1}: {2}: {3}", product.ProductSaleID, product.Product.ProductName,product.Product.ProductSerial, product.Tenant.TenantName );
@@ -201,34 +201,34 @@ public class staytheories_console
             switch (ch = Convert.ToInt32(Console.ReadLine()))
             {
                 case 1:
-                    addTenantFromConsole();
+                    AddTenantFromConsole();
                     break;
                 case 2:
-                    addProductFromConsole();
+                    AddProductFromConsole();
                     break;
                 case 3:
-                    updateTenantFromConsole();
+                    UpdateTenantFromConsole();
                     break;
                 case 4:
-                    updateProductFromConsole();
+                    UpdateProductFromConsole();
                     break;
                 case 5:
-                    removeTenantFromDatabase();
+                    RemoveTenantFromDatabase();
                     break;
                 case 6:
-                    removeProductFromDatabase();
+                    RemoveProductFromDatabase();
                     break;
                 case 7:
-                    addSaleFromConsole();
+                    AddSaleFromConsole();
                     break;
                 case 8:
-                    getAllTenants();
+                    GetAllTenants();
                     break;
                 case 9:
-                    getAllProducts();
+                    GetAllProducts();
                     break;
                 case 10:
-                    getAllProductsSale();
+                    GetAllProductsSale();
                     break;
                 case 11:
                     Console.WriteLine("----Thank you----");

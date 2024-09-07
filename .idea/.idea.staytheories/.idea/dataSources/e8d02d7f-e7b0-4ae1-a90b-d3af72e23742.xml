@@ -1012,12 +1012,12 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="291" parent="1" name="staytheories">
-      <LastIntrospectionLocalTimestamp>2024-09-07.12:43:25</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-09-07.17:52:05</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="292" parent="1" name="sys">
       <Grants>sys_config|||mysql.sys|localhost|SELECT|G</Grants>
-      <LastIntrospectionLocalTimestamp>2024-09-07.09:26:28</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-09-07.17:47:36</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <user id="293" parent="1" name="mysql.infoschema">
@@ -2129,19 +2129,19 @@ stats_persistent
       <Engine>PERFORMANCE_SCHEMA</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="526" parent="291" name="ProductSales">
+    <table id="526" parent="291" name="__efmigrationshistory">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="527" parent="291" name="Products">
+    <table id="527" parent="291" name="products">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="528" parent="291" name="Tenants">
+    <table id="528" parent="291" name="productsales">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="529" parent="291" name="__EFMigrationsHistory">
+    <table id="529" parent="291" name="tenants">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
@@ -19326,111 +19326,111 @@ VARIABLE_NAME</ColNames>
       <StoredType>char(255)|0s</StoredType>
       <CollationName>ascii_general_ci</CollationName>
     </column>
-    <column id="3525" parent="526" name="ProductSaleID">
+    <column id="3525" parent="526" name="MigrationId">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>varchar(150)|0s</StoredType>
+    </column>
+    <column id="3526" parent="526" name="ProductVersion">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>varchar(32)|0s</StoredType>
+    </column>
+    <index id="3527" parent="526" name="PRIMARY">
+      <ColNames>MigrationId</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="3528" parent="526" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="3529" parent="527" name="ProductID">
       <AutoIncrement>1</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="3526" parent="526" name="ProductID">
+    <column id="3530" parent="527" name="ProductName">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>longtext|0s</StoredType>
+    </column>
+    <column id="3531" parent="527" name="ProductSerial">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StoredType>longtext|0s</StoredType>
+    </column>
+    <index id="3532" parent="527" name="PRIMARY">
+      <ColNames>ProductID</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="3533" parent="527" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="3534" parent="528" name="ProductSaleID">
+      <AutoIncrement>1</AutoIncrement>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="3535" parent="528" name="ProductID">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="3527" parent="526" name="TenantID">
+    <column id="3536" parent="528" name="TenantID">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <foreign-key id="3528" parent="526" name="FK_ProductSales_Products_ProductID">
+    <foreign-key id="3537" parent="528" name="FK_ProductSales_Products_ProductID">
       <ColNames>ProductID</ColNames>
       <OnDelete>cascade</OnDelete>
       <RefColNames>ProductID</RefColNames>
-      <RefTableName>Products</RefTableName>
+      <RefTableName>products</RefTableName>
     </foreign-key>
-    <foreign-key id="3529" parent="526" name="FK_ProductSales_Tenants_TenantID">
+    <foreign-key id="3538" parent="528" name="FK_ProductSales_Tenants_TenantID">
       <ColNames>TenantID</ColNames>
       <OnDelete>cascade</OnDelete>
       <RefColNames>TenantID</RefColNames>
-      <RefTableName>Tenants</RefTableName>
+      <RefTableName>tenants</RefTableName>
     </foreign-key>
-    <index id="3530" parent="526" name="PRIMARY">
+    <index id="3539" parent="528" name="PRIMARY">
       <ColNames>ProductSaleID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="3531" parent="526" name="IX_ProductSales_ProductID">
+    <index id="3540" parent="528" name="IX_ProductSales_ProductID">
       <ColNames>ProductID</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="3532" parent="526" name="IX_ProductSales_TenantID">
+    <index id="3541" parent="528" name="IX_ProductSales_TenantID">
       <ColNames>TenantID</ColNames>
       <Type>btree</Type>
-    </index>
-    <key id="3533" parent="526" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <column id="3534" parent="527" name="ProductID">
-      <AutoIncrement>1</AutoIncrement>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StoredType>int|0s</StoredType>
-    </column>
-    <column id="3535" parent="527" name="ProductName">
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-      <StoredType>longtext|0s</StoredType>
-    </column>
-    <column id="3536" parent="527" name="ProductSerial">
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-      <StoredType>longtext|0s</StoredType>
-    </column>
-    <index id="3537" parent="527" name="PRIMARY">
-      <ColNames>ProductID</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <key id="3538" parent="527" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <column id="3539" parent="528" name="TenantID">
-      <AutoIncrement>1</AutoIncrement>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StoredType>int|0s</StoredType>
-    </column>
-    <column id="3540" parent="528" name="TenantName">
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-      <StoredType>longtext|0s</StoredType>
-    </column>
-    <index id="3541" parent="528" name="PRIMARY">
-      <ColNames>TenantID</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
     </index>
     <key id="3542" parent="528" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="3543" parent="529" name="MigrationId">
+    <column id="3543" parent="529" name="TenantID">
+      <AutoIncrement>2</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StoredType>varchar(150)|0s</StoredType>
+      <StoredType>int|0s</StoredType>
     </column>
-    <column id="3544" parent="529" name="ProductVersion">
+    <column id="3544" parent="529" name="TenantName">
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StoredType>varchar(32)|0s</StoredType>
+      <StoredType>longtext|0s</StoredType>
     </column>
     <index id="3545" parent="529" name="PRIMARY">
-      <ColNames>MigrationId</ColNames>
+      <ColNames>TenantID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
