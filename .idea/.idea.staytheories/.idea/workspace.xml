@@ -7,9 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93f0c52d-b694-4874-a14f-a1ed2a842fac" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.staytheories/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.staytheories/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.staytheories/.idea/dataSources/e8d02d7f-e7b0-4ae1-a90b-d3af72e23742.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.staytheories/.idea/dataSources/e8d02d7f-e7b0-4ae1-a90b-d3af72e23742.xml" afterDir="false" />
+    <list default="true" id="93f0c52d-b694-4874-a14f-a1ed2a842fac" name="Changes" comment="Fixed Warnings">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.staytheories/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.staytheories/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +84,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -118,7 +116,7 @@
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
-    <configuration>$USER_HOME$/.subversion</configuration>
+    <configuration>C:\Users\yashodhan.pagar\AppData\Roaming\Subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -131,7 +129,7 @@
       <workItem from="1725687710957" duration="998000" />
       <workItem from="1725688724423" duration="4090000" />
       <workItem from="1725696660836" duration="18494000" />
-      <workItem from="1725731420915" duration="404000" />
+      <workItem from="1725731420915" duration="1092000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -165,7 +163,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725715208402</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Fixed Warnings">
+      <option name="closed" value="true" />
+      <created>1725732349512</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1725732349512</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,7 +197,8 @@
     <MESSAGE value="Try push" />
     <MESSAGE value="Git change" />
     <MESSAGE value="Ready App" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ready App" />
+    <MESSAGE value="Fixed Warnings" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed Warnings" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
